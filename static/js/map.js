@@ -293,6 +293,15 @@ function initMap() { // eslint-disable-line no-unused-vars
             changeLocation(e.location.y, e.location.x)
         })
     }
+	var popup = L.popup()
+	function onMapClick(e) {
+			popup
+				.setLatLng(e.latlng)
+				.setContent("<b>Add new Gym to Map</b><br><br>Add new gym on " + e.latlng.lat + " / " + e.latlng.lng)
+				.openOn(map)
+		}
+
+	map.on('click', onMapClick)
 
     map.on('zoom', function () {
         if (storeZoom === true) {
